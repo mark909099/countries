@@ -12,7 +12,7 @@ const FilterInput = () => {
     const setFilter = allCountriesStore(state => state.setFilter);
     const setShow = allCountriesStore(state => state.setShow);
     return (
-<input value={filter} onChange={(evt) => {setFilter(evt.target.value); if(evt.target.value < 1) {
+<input placeholder="Search country. . ." value={filter} onChange={(evt) => {setFilter(evt.target.value); if(evt.target.value < 1) {
     {setShow(evt.target.value)}
 }}} />
     )
@@ -31,13 +31,14 @@ const show = allCountriesStore(state => state.show);
             .filter(({name}) =>
             name.toLowerCase().includes(filter.toLowerCase())
             )
-            .map(({name, alpha2Code, alpha3Code, flag, region, subregion, timezones, population, borders, area}) => (
+            .map(({name, alpha2Code, alpha3Code, flag, region, subregion, timezones, population, borders, area, languages}) => (
                 <div key={name}>
                     <p>{name}</p>
                     <img style={{height:100, width:100}} src={`${flag}`} />
                     <p>Continent: {region}</p>
                     <p>Region: {subregion}</p>
                     <p>{timezones.length > 1? `Timezones ${timezones}` : `Timezone: ${timezones}`}</p>
+                    <p>{languages.length.name == 4? `Language: ${languages.name}` : `more than one`}</p>
                     <p>Population: {population.toLocaleString()}</p>
                     <p>{area? `Area: ${area.toLocaleString()}` : null}</p>
                     <p>ISO code: {alpha2Code} / {alpha3Code}</p>
