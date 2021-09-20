@@ -9,9 +9,7 @@ export const allCountriesStore = create(set => ({
         filter,
         show:true,
     })),
-    setShow: (filter) => set((state) => ({
-        ...state,
-        filter,
+    setShowFalse: () => set((state) => ({
         show:false
     })),
     setCountry: (country) => set((state) => ({

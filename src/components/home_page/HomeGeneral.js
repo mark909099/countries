@@ -1,17 +1,15 @@
 import React from 'react'
-import Navbar from '../Navbar';
-import FetchCountryData from './FetchCountryData';
-import Counter from './Counter';
 import FetchAllCountries from './FetchAllCountries';
+import Header from './Header';
 
 export default function HomeGeneral() {
 
     return (
+
 <div>
-<Navbar />  
-<Counter />
-{/* <FetchCountryData />  */}
+<Header />
 <FetchAllCountries />
 </div>
+
     )
 }
