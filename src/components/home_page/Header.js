@@ -11,7 +11,7 @@ export default function Header() {
         textAlign:'center'
     }}>Country facts</Box>
 </Typography>
-<Flip delay={5000} left cascade>
+<Flip delay={3000} left cascade>
 <Typography className="sub_header" variant="h6" letterSpacing={3}>
 <Box sx={{
         textAlign:'center',

@@ -1,32 +1,15 @@
-.input1:checked {
-    background-color:red
-}
-
 .header {
-    animation: transitionIn 5s;
+    animation: transitionIn 2s;
 }
-
-/* .sub_header {
-    animation: transitionInSubheader 3.5s;
-} */
 
 @keyframes transitionIn {
     from {
         opacity: 0;
-        transform: scale(0.6) translate(70%, -30%);
+        transform: matrix(8, 8, 8, 2, 2, 2);
     }
     to {
         opacity: 1;
      }
 }
 
-@keyframes transitionInSubheader {
-    from {
-        opacity: 0;
-        transform: scale(0.3) translate(-100%, -100%);
-    }
-    to {
-        opacity: 1;
-     }
-}
 

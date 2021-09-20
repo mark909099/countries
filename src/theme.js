@@ -28,6 +28,21 @@ theme.typography.h2 = {
   },
 };
 
+theme.typography.h5 = {
+  fontWeight:'600',
+  [theme.breakpoints.up('xs')]: {
+    fontSize: '2rem',
+  },
+  [theme.breakpoints.up('sm')]: {
+    fontSize: '1.5rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '2.5rem',
+  },
+  [theme.breakpoints.up('lg')]: {
+    fontSize: '3rem',
+  },
+};
 theme.typography.h6 = {
   fontWeight:'300',
   [theme.breakpoints.up('xs')]: {
