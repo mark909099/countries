@@ -1,17 +1,18 @@
 import React from 'react';
-import './home_styles.css';
 import { Typography, Box } from '@mui/material';
-import { Flip } from 'react-reveal';
+import { Flip, Fade } from 'react-reveal';
 
 export default function Header() {
     return (
 <div className="header">
+<Fade duration={2500}>
 <Typography variant="h2">
     <Box sx={{
         textAlign:'center'
     }}>Country facts</Box>
 </Typography>
-<Flip delay={3000} left cascade>
+</Fade>
+<Flip delay={2000} left cascade>
 <Typography className="sub_header" variant="h6" letterSpacing={3}>
 <Box sx={{
         textAlign:'center',

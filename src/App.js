@@ -10,7 +10,7 @@ import theme from './theme';
 
 function App() {
   return (
-<div>
+<div className="main">
 <ThemeProvider theme={theme}>
 <Router>
   <Switch>

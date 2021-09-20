@@ -31,18 +31,19 @@ theme.typography.h2 = {
 theme.typography.h5 = {
   fontWeight:'600',
   [theme.breakpoints.up('xs')]: {
-    fontSize: '2rem',
+    fontSize: '1rem',
   },
   [theme.breakpoints.up('sm')]: {
-    fontSize: '1.5rem',
+    fontSize: '1.2rem',
   },
   [theme.breakpoints.up('md')]: {
-    fontSize: '2.5rem',
+    fontSize: '1.6rem',
   },
   [theme.breakpoints.up('lg')]: {
-    fontSize: '3rem',
+    fontSize: '2rem',
   },
 };
+
 theme.typography.h6 = {
   fontWeight:'300',
   [theme.breakpoints.up('xs')]: {
@@ -53,6 +54,38 @@ theme.typography.h6 = {
   },
   [theme.breakpoints.up('md')]: {
     fontSize: '2.2rem',
+  },
+};
+
+theme.typography.subtitle1 = {
+  fontWeight:'300',
+  [theme.breakpoints.up('xs')]: {
+    fontSize: '1rem',
+  },
+  [theme.breakpoints.up('sm')]: {
+    fontSize: '1.3rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '1.6rem',
+  },
+  [theme.breakpoints.up('lg')]: {
+    fontSize: '2rem',
+  },
+};
+
+theme.typography.subtitle2 = {
+  fontWeight:'300',
+  [theme.breakpoints.up('xs')]: {
+    fontSize: '0.8rem',
+  },
+  [theme.breakpoints.up('sm')]: {
+    fontSize: '1rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '1.3rem',
+  },
+  [theme.breakpoints.up('lg')]: {
+    fontSize: '1.6rem',
   },
 };
 
