@@ -5,7 +5,8 @@ import {
     Box, 
     Grid,
     Typography,
-    CardMedia
+    CardMedia,
+    Divider
         } from '@mui/material';
 import { Fade } from 'react-reveal';
 
@@ -52,10 +53,10 @@ const show = allCountriesStore(state => state.show);
             <div style={{backgroundColor: "#f5f5f5"}}>
             {country
             .filter(({name}) =>
-            name.toLowerCase().includes(filter.toLowerCase())
+            name.common.toLowerCase().includes(filter.toLowerCase())
             )
-            .map(({name, alpha2Code, alpha3Code, flag, region, subregion, timezones, population, borders, area, languages, topLevelDomain, capital, altSpellings, callingCodes, regionalBlocs, currencies}) => (
-<div key={name}>
+            .map(({name, flags, region, subregion, borders, area, languages, capital, altSpellings }) => (
+<div key={name.common}>
 <Box sx={{ flexGrow: 1}}>
 <Grid
   container
@@ -65,7 +66,7 @@ const show = allCountriesStore(state => state.show);
 >
 <Grid item xs={0} md={2}></Grid>
 <Grid item xs={6} md={4} display="flex" flexDirection="column"  alignItems="center">
-<Typography style={{paddingBottom:'0.5rem'}} variant="h5">{name}</Typography>
+<Typography style={{paddingBottom:'0.5rem'}} variant="h5">{name.common}</Typography>
 <Box
     sx={{
         width: {
@@ -77,7 +78,7 @@ const show = allCountriesStore(state => state.show);
     }}>
 <CardMedia
         component="img"
-        image={`${flag}`}
+        image={`${flags[0]}`}
         alt="flag"
       />
 </Box>
@@ -99,58 +100,44 @@ const show = allCountriesStore(state => state.show);
 <Typography variant="subtitle2" textAlign="center" style={{paddingTop:'1rem', paddingBottom:'1rem'}}>Additional name spellings: {altSpellings.join(", ")}.</Typography>
 </Grid>
 
-<Grid item xs={1} sm={2} lg={3} xl={3}></Grid>
-<Grid item xs={4} sm={4} lg={3} xl={4}>
-<Box
-    sx={{
-        display:'flex',
-        flexDirection:'column',
-    }}>
-<Typography variant="subtitle2">{languages.length === 1 && `Language: ${languages[0].name}`}</Typography>
-<Typography variant="subtitle2">{languages.length === 2 && `Languages: ${languages[0].name}, ${languages[1].name}`}</Typography>
-<Typography variant="subtitle2">{languages.length === 3 && `Languages: ${languages[0].name}, ${languages[1].name}, ${languages[2].name}`}</Typography>
-<Typography variant="subtitle2">{languages.length === 4 && `Languages: ${languages[0].name}, ${languages[1].name}, ${languages[2].name}, ${languages[3].name}`}</Typography>
-<Typography style={{paddingBottom:'12px', paddingTop:'12px'}} variant="subtitle2">Population: {population.toLocaleString()}</Typography>
-<Typography variant="subtitle2">{area? `Area: ${area.toLocaleString()}` : null}</Typography>
-</Box>
+<Grid item xs={0} sm={0} md={1} lg={2} xl={3}></Grid>
+
+<Grid item xs={6} sm={6} md={5} lg={4} xl={3}>
+<Typography style={{textAlign:'center'}} variant="subtitle2">{languages && Object.keys(languages).length === 1 ? `Language: ${Object.values(languages)}` : null}</Typography>
+<Typography style={{textAlign:'center'}} variant="subtitle2">{languages && Object.keys(languages).length > 1 ? `Languages: ${Object.values(languages).join(", ")}` : null}</Typography>
 </Grid>
 
-
-
-<Grid item xs={7} sm={6} lg={6} xl={5}>
-<Box
-    sx={{
-        display:'flex',
-        flexDirection:'column',
-        paddingRight:'10px'
-    }}>
-<Typography variant="subtitle2">ISO code: {alpha2Code} / {alpha3Code}</Typography>
-<Typography style={{paddingBottom:'12px', paddingTop:'12px'}} variant="subtitle2">Currency: {currencies[0].name}.&nbsp; Symbol: {currencies[0].symbol}</Typography>
-<Typography variant="subtitle2">Calling code: {callingCodes}</Typography>
-</Box>
+<Grid item xs={6} sm={6} md={5} lg={4} xl={3}>
+<Typography style={{textAlign:'center'}} variant="subtitle2">{area? `Area: ${area.toLocaleString()} sq. kilometers` : null}</Typography>
 </Grid>
 
-<Grid item xs={1} md={2} lg={3}></Grid>
-<Grid item xs={10} md={8} lg={8}>
+<Grid item xs={0} sm={0} md={1} lg={2} xl={3}></Grid>
+
+
+
+<Grid item xs={10}>
 <Box
     sx={{
         paddingTop:'2rem',
         paddingRight:'10px',
         paddingLeft:'10px'
     }}>
-<Typography style={{paddingBottom:'3px'}} variant="subtitle2">Top level domain:&nbsp; {topLevelDomain}</Typography>
-<Typography style={{paddingBottom:'3px'}} variant="subtitle2">{regionalBlocs.length === 1 && `Political / Economic coalition: ${regionalBlocs[0].name}`}</Typography>
-<Typography style={{paddingBottom:'3px'}} variant="subtitle2">{timezones.length > 1? `Timezones: ${timezones.join(", ")}` : `Timezone: ${timezones}`}</Typography>
-<Typography variant="subtitle2">{borders.length === 0 && "No bordering countries."}</Typography>
-<Typography variant="subtitle2">{borders.length === 1 && `Bordering country: ${borders}`}</Typography>
-<Typography variant="subtitle2">{borders.length > 1 && `Bordering countries: ${borders.join(", ")}`}</Typography>
+<Typography style={{textAlign:'center'}} variant="subtitle2">{borders == null && "No bordering countries."}</Typography>
+<Typography style={{textAlign:'center'}} variant="subtitle2">{borders && borders.length === 1 ? `Bordering country: ${borders}` : null}</Typography>
+<Typography style={{textAlign:'center'}} variant="subtitle2">{borders && borders.length > 1 ? `Bordering countries: ${borders.join(", ")}` : null}</Typography>
 </Box>
 </Grid>
 
-<Grid item xs={1} md={2} lg={1}></Grid>
-
 </Grid>
 </Box>
+
+<Box sx={{
+    paddingTop:'2rem',
+    paddingBottom:'2rem'
+}}>
+<Divider />
+</Box>
+
 </div>
                 
             ))
@@ -165,7 +152,7 @@ const show = allCountriesStore(state => state.show);
 }
 
 
-fetch('https://restcountries.eu/rest/v2/all')
+fetch('https://restcountries.com/v3/all')
   .then((resp) => resp.json())
   .then((country) =>
     allCountriesStore.setState((state) => ({

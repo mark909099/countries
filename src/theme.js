@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles';
-import { blue, lightBlue } from '@mui/material/colors';
+import { grey } from '@mui/material/colors';
 
 const theme = createTheme({
     typography: {
@@ -7,10 +7,10 @@ const theme = createTheme({
     },
     palette: {
       primary: {
-        main: blue[700],
+        main: grey[900],
       },
       secondary: {
-        main: lightBlue[300],
+        main: grey[800],
       },
     },
   });
@@ -25,6 +25,19 @@ theme.typography.h2 = {
   },
   [theme.breakpoints.up('md')]: {
     fontSize: '7rem',
+  },
+};
+
+theme.typography.h3 = {
+  fontWeight:'300',
+  [theme.breakpoints.up('xs')]: {
+    fontSize: '3.5rem',
+  },
+  [theme.breakpoints.up('sm')]: {
+    fontSize: '5rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '5.5rem',
   },
 };
 
@@ -86,6 +99,22 @@ theme.typography.subtitle2 = {
   },
   [theme.breakpoints.up('lg')]: {
     fontSize: '1.6rem',
+  },
+};
+
+theme.typography.body2 = {
+  fontWeight:'300',
+  [theme.breakpoints.up('xs')]: {
+    fontSize: '0.6rem',
+  },
+  [theme.breakpoints.up('sm')]: {
+    fontSize: '0.8rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '1.1rem',
+  },
+  [theme.breakpoints.up('lg')]: {
+    fontSize: '1.4rem',
   },
 };
 
