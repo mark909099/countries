@@ -1,4 +1,4 @@
-Website about contries information, using third-pary API.
+Website about countries information, using third-pary API.
 
 Thanks to https://restcountries.com/
 
